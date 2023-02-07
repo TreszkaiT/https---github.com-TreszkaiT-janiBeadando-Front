@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ConfigService } from './services/config.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'janibeadando';
+  
+  constructor(private _title: Title, private config: ConfigService){
+    this._title.setTitle(this.config.get('appTitle') as string)
+  }
 }
