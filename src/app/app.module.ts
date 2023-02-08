@@ -45,6 +45,10 @@ import { SocialMediaService } from './services/models/socialmedia.service';
 import { SocialMediaComponent } from './frames/content/socialmedia/socialmedia.component';
 import { SocialMediaNewComponent } from './frames/content/socialmedia/socialmedia-new/socialmedia-new.component';
 import { SocialMediaEditComponent } from './frames/content/socialmedia/socialmedia-edit/socialmedia-edit.component';
+import { StudyService } from './services/models/study.service';
+import { StudyComponent } from './frames/content/study/study.component';
+import { StudyNewComponent } from './frames/content/study/study-new/study-new.component';
+import { StudyEditComponent } from './frames/content/study/study-edit/study-edit.component';
 
 
 
@@ -70,7 +74,10 @@ const roterSettings: Routes = [
   { path: "proofexperience-edit", component: ProofExperienceEditComponent},   
   { path: "socialmedia", component: SocialMediaComponent},
   { path: "socialmedia-new", component: SocialMediaNewComponent},
-  { path: "socialmedia-edit", component: SocialMediaEditComponent},    
+  { path: "socialmedia-edit", component: SocialMediaEditComponent},   
+  { path: "study", component: StudyComponent},
+  { path: "study-new", component: StudyNewComponent},
+  { path: "study-edit", component: StudyEditComponent},      
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -102,7 +109,10 @@ const roterSettings: Routes = [
     ProofExperienceEditComponent,
     SocialMediaComponent,
     SocialMediaNewComponent,
-    SocialMediaEditComponent
+    SocialMediaEditComponent,
+    StudyComponent,
+    StudyNewComponent,
+    StudyEditComponent
   ],
   imports: [
     BrowserModule,
@@ -123,7 +133,8 @@ const roterSettings: Routes = [
     PhoneService,
     PictureService,
     ProofExperienceService,
-    SocialMediaService
+    SocialMediaService,
+    StudyService
   ],
   bootstrap: [AppComponent]
 })
