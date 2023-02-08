@@ -29,6 +29,10 @@ import { OtherSkillService } from './services/models/otherskill.service';
 
 import { OtherSkillNewComponent } from './frames/content/otherskill/otherskill-new/otherskill-new.component';
 import { OtherSkillEditComponent } from './frames/content/otherskill/otherskill-edit/otherskill-edit.component';
+import { PhoneService } from './services/models/phone.service';
+import { PhoneComponent } from './frames/content/phone/phone.component';
+import { PhoneNewComponent } from './frames/content/phone/phone-new/phone-new.component';
+import { PhoneEditComponent } from './frames/content/phone/phone-edit/phone-edit.component';
 
 
 
@@ -43,9 +47,9 @@ const roterSettings: Routes = [
   { path: "otherskill", component: OtherSkillComponent},
   { path: "otherskill-new", component: OtherSkillNewComponent},
   { path: "otherskill-edit", component: OtherSkillEditComponent},
-  // { path: "szamla", component: SzamlaComponent},
-  // { path: "szamla-new", component: SzamlaNewComponent},
-  // { path: "szamla-edit", component: SzamlaEditComponent},
+  { path: "phone", component: PhoneComponent},
+  { path: "phone-new", component: PhoneNewComponent},
+  { path: "phone-edit", component: PhoneEditComponent},
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -65,7 +69,10 @@ const roterSettings: Routes = [
     LanguageNewComponent,
     OtherSkillComponent,
     OtherSkillNewComponent,
-    OtherSkillEditComponent
+    OtherSkillEditComponent,
+    PhoneComponent,
+    PhoneNewComponent,
+    PhoneEditComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +89,8 @@ const roterSettings: Routes = [
     CityService,
     LanguageService,
     MessageappService,
-    OtherSkillService
+    OtherSkillService,
+    PhoneService
   ],
   bootstrap: [AppComponent]
 })
