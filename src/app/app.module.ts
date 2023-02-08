@@ -33,6 +33,10 @@ import { PhoneService } from './services/models/phone.service';
 import { PhoneComponent } from './frames/content/phone/phone.component';
 import { PhoneNewComponent } from './frames/content/phone/phone-new/phone-new.component';
 import { PhoneEditComponent } from './frames/content/phone/phone-edit/phone-edit.component';
+import { PictureService } from './services/models/picture.service';
+import { PictureComponent } from './frames/content/picture/picture.component';
+import { PictureNewComponent } from './frames/content/picture/picture-new/picture-new.component';
+import { PictureEditComponent } from './frames/content/picture/picture-edit/picture-edit.component';
 
 
 
@@ -50,6 +54,9 @@ const roterSettings: Routes = [
   { path: "phone", component: PhoneComponent},
   { path: "phone-new", component: PhoneNewComponent},
   { path: "phone-edit", component: PhoneEditComponent},
+  { path: "picture", component: PictureComponent},
+  { path: "picture-new", component: PictureNewComponent},
+  { path: "picture-edit", component: PictureEditComponent},  
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -72,7 +79,10 @@ const roterSettings: Routes = [
     OtherSkillEditComponent,
     PhoneComponent,
     PhoneNewComponent,
-    PhoneEditComponent
+    PhoneEditComponent,
+    PictureComponent,
+    PictureNewComponent,
+    PictureEditComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +100,8 @@ const roterSettings: Routes = [
     LanguageService,
     MessageappService,
     OtherSkillService,
-    PhoneService
+    PhoneService,
+    PictureService
   ],
   bootstrap: [AppComponent]
 })
