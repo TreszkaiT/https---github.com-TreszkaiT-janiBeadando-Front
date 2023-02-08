@@ -37,6 +37,10 @@ import { PictureService } from './services/models/picture.service';
 import { PictureComponent } from './frames/content/picture/picture.component';
 import { PictureNewComponent } from './frames/content/picture/picture-new/picture-new.component';
 import { PictureEditComponent } from './frames/content/picture/picture-edit/picture-edit.component';
+import { ProofExperienceService } from './services/models/proofexperience.service';
+import { ProofExperienceComponent } from './frames/content/proofexperience/proofexperience.component';
+import { ProofExperienceNewComponent } from './frames/content/proofexperience/proofexperience-new/proofexperience-new.component';
+import { ProofExperienceEditComponent } from './frames/content/proofexperience/proofexperience-edit/proofexperience-edit.component';
 
 
 
@@ -57,6 +61,9 @@ const roterSettings: Routes = [
   { path: "picture", component: PictureComponent},
   { path: "picture-new", component: PictureNewComponent},
   { path: "picture-edit", component: PictureEditComponent},  
+  { path: "proofexperience", component: ProofExperienceComponent},
+  { path: "proofexperience-new", component: ProofExperienceNewComponent},
+  { path: "proofexperience-edit", component: ProofExperienceEditComponent},   
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -82,7 +89,10 @@ const roterSettings: Routes = [
     PhoneEditComponent,
     PictureComponent,
     PictureNewComponent,
-    PictureEditComponent
+    PictureEditComponent,
+    ProofExperienceComponent,
+    ProofExperienceNewComponent,
+    ProofExperienceEditComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +111,8 @@ const roterSettings: Routes = [
     MessageappService,
     OtherSkillService,
     PhoneService,
-    PictureService
+    PictureService,
+    ProofExperienceService
   ],
   bootstrap: [AppComponent]
 })
