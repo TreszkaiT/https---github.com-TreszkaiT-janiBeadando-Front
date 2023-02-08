@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Messageapp } from '../../model/messageapp';
+import { MessageApp } from '../../model/messageapp';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpService } from '../http.service';
@@ -8,99 +8,99 @@ import { ConfigService } from '../config.service';
 @Injectable({
   providedIn: 'root'
 })
-export class MessageappService {
+export class MessageAppService {
 
-  public messageappObserve: Subject<any> = new Subject()
+  public messageAppObserve: Subject<any> = new Subject()
 
-  currencies: Array<Messageapp> = []
+  currencies: Array<MessageApp> = []
 
-  messageappUrl: string = ''
+  messageAppUrl: string = ''
 
-  lastEditedMessageapp = <Messageapp>{}
+  lastEditedMessageApp = <MessageApp>{}
 
   constructor(private http: HttpClient, private httpService: HttpService, private config: ConfigService) { 
-    this.messageappUrl = this.config.get('apiUrl') + "/messageapp"                            // ez itt a server mappán belül lévő /messageapp.json fájl neve/helye !!!!!!!!!!
-    this.getMessageappWithObserver()                                                        // már betöltéskor értesüljenek más Components-ek a változásról
+    this.messageAppUrl = this.config.get('apiUrl') + "/messageApp"                            // ez itt a server mappán belül lévő /messageApp.json fájl neve/helye !!!!!!!!!!
+    this.getMessageAppWithObserver()                                                        // már betöltéskor értesüljenek más Components-ek a változásról
   }
 
-  getMessageappWithObserver() {
-    this.http.get(this.messageappUrl + "/all")
+  getMessageAppWithObserver() {
+    this.http.get(this.messageAppUrl + "/all")
       .subscribe(
         (response) => {
-          this.currencies = this.jsonToMessageapp(response)
-          this.messageappObserve.next(this.currencies)                                      // Component értesítése/frissítése itt történik 
+          this.currencies = this.jsonToMessageApp(response)
+          this.messageAppObserve.next(this.currencies)                                      // Component értesítése/frissítése itt történik 
         },
         (error) => {
-          this.messageappObserve.error("Error in Observe")
+          this.messageAppObserve.error("Error in Observe")
         }
       )
   }
 
-  jsonToMessageapp(messageappArray: any): Messageapp[] {
-    let currencies1: Array<Messageapp> = []
+  jsonToMessageApp(messageAppArray: any): MessageApp[] {
+    let currencies1: Array<MessageApp> = []
     
-    for(let messageapp of messageappArray){
-      let newMessageapp = new Messageapp()
-      newMessageapp.fromObject(messageapp)
-      currencies1.push(newMessageapp)
+    for(let messageApp of messageAppArray){
+      let newMessageApp = new MessageApp()
+      newMessageApp.fromObject(messageApp)
+      currencies1.push(newMessageApp)
     }    
     return currencies1
   }
 
-  addMessageapp(messageapp: Messageapp){
+  addMessageApp(messageApp: MessageApp){
     return new Promise( (resolve, reject) => {
-      this.httpService.create(`${this.messageappUrl}`, messageapp)
+      this.httpService.create(`${this.messageAppUrl}`, messageApp)
         .then(
           (response) => {
-            this.getMessageappWithObserver()
-            resolve('Messageapp add')
+            this.getMessageAppWithObserver()
+            resolve('MessageApp add')
           }
         )
     })
   }
 
-  updateMessageapp(messageapp: Messageapp){
+  updateMessageApp(messageApp: MessageApp){
     return new Promise( (resolve, reject) => {
-      this.httpService.update(`${this.messageappUrl}/${messageapp.id}`, messageapp)
+      this.httpService.update(`${this.messageAppUrl}/${messageApp.id}`, messageApp)
         .then(
           (response) => { 
-            this.getMessageappWithObserver() 
-            resolve('Messageapp updated')
+            this.getMessageAppWithObserver() 
+            resolve('MessageApp updated')
           }
         )
     })
   }
 
-  deleteMessageapp(messageapp: Messageapp){
+  deleteMessageApp(messageApp: MessageApp){
     return new Promise( (resolve, reject) => {
-      this.httpService.delete(`${this.messageappUrl}/${messageapp.id}`)
+      this.httpService.delete(`${this.messageAppUrl}/${messageApp.id}`)
         .then(
           (response) => { 
-            this.getMessageappWithObserver() 
-            resolve('Messageapp deleted')
+            this.getMessageAppWithObserver() 
+            resolve('MessageApp deleted')
           }
         )
     })
   }
 
-  readMessageappOne(one: boolean, id?: string){
+  readMessageAppOne(one: boolean, id?: string){
     let urls: string = ""
-    if(one) urls = this.messageappUrl + "/" + id
-    else urls = this.messageappUrl + "/all"
+    if(one) urls = this.messageAppUrl + "/" + id
+    else urls = this.messageAppUrl + "/all"
 
     return new Promise( (resolve, reject) => {
       this.httpService.read(urls)
         .then(
           (response) => {
-            this.getMessageappWithObserver()
+            this.getMessageAppWithObserver()
             resolve(response)
           }
         )
     })
   }
 
-  getLastEditedMessageapp(){
-    return this.lastEditedMessageapp
+  getLastEditedMessageApp(){
+    return this.lastEditedMessageApp
   }
 
 }

@@ -1,4 +1,4 @@
-export class Messageapp{
+export class MessageApp{
     id: number
     name: string
 

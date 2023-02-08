@@ -22,7 +22,7 @@ import { LanguageService } from './services/models/language.service';
 import { LanguageComponent } from './frames/content/language/language.component';
 import { LanguageEditComponent } from './frames/content/language/language-edit/language-edit.component';
 import { LanguageNewComponent } from './frames/content/language/language-new/language-new.component';
-import { MessageappService } from './services/models/messageapp.service';
+import { MessageAppService } from './services/models/messageapp.service';
 import { OtherSkillComponent } from './frames/content/otherskill/otherskill.component';
 import { OtherSkillService } from './services/models/otherskill.service';
 
@@ -49,6 +49,9 @@ import { StudyService } from './services/models/study.service';
 import { StudyComponent } from './frames/content/study/study.component';
 import { StudyNewComponent } from './frames/content/study/study-new/study-new.component';
 import { StudyEditComponent } from './frames/content/study/study-edit/study-edit.component';
+import { MessageAppComponent } from './frames/content/messageapp/messageapp.component';
+import { MessageAppNewComponent } from './frames/content/messageapp/messageapp-new/messageapp-new.component';
+import { MessageAppEditComponent } from './frames/content/messageapp/messageapp-edit/messageapp-edit.component';
 
 
 
@@ -78,6 +81,9 @@ const roterSettings: Routes = [
   { path: "study", component: StudyComponent},
   { path: "study-new", component: StudyNewComponent},
   { path: "study-edit", component: StudyEditComponent},      
+  { path: "messageapp", component: MessageAppComponent},
+  { path: "messageapp-new", component: MessageAppNewComponent},
+  { path: "messageapp-edit", component: MessageAppEditComponent},   
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -112,7 +118,10 @@ const roterSettings: Routes = [
     SocialMediaEditComponent,
     StudyComponent,
     StudyNewComponent,
-    StudyEditComponent
+    StudyEditComponent,
+    MessageAppComponent,
+    MessageAppNewComponent,
+    MessageAppEditComponent
   ],
   imports: [
     BrowserModule,
@@ -128,7 +137,7 @@ const roterSettings: Routes = [
     ConfigService,
     CityService,
     LanguageService,
-    MessageappService,
+    MessageAppService,
     OtherSkillService,
     PhoneService,
     PictureService,
