@@ -22,6 +22,15 @@ import { LanguageService } from './services/models/language.service';
 import { LanguageComponent } from './frames/content/language/language.component';
 import { LanguageEditComponent } from './frames/content/language/language-edit/language-edit.component';
 import { LanguageNewComponent } from './frames/content/language/language-new/language-new.component';
+import { MessageappService } from './services/models/messageapp.service';
+import { OtherSkillComponent } from './frames/content/otherskill/otherskill.component';
+import { OtherSkillService } from './services/models/otherskill.service';
+
+
+import { OtherSkillNewComponent } from './frames/content/otherskill/otherskill-new/otherskill-new.component';
+import { OtherSkillEditComponent } from './frames/content/otherskill/otherskill-edit/otherskill-edit.component';
+
+
 
 const roterSettings: Routes = [
   { path: '', component: ContentComponent},
@@ -30,7 +39,10 @@ const roterSettings: Routes = [
   { path: "city-edit", component: CityEditComponent},
   { path: "language", component: LanguageComponent},
   { path: "language-new", component: LanguageNewComponent},
-  { path: "language-edit", component: LanguageEditComponent},
+  { path: "language-edit", component: LanguageEditComponent},  
+  { path: "otherskill", component: OtherSkillComponent},
+  { path: "otherskill-new", component: OtherSkillNewComponent},
+  { path: "otherskill-edit", component: OtherSkillEditComponent},
   // { path: "szamla", component: SzamlaComponent},
   // { path: "szamla-new", component: SzamlaNewComponent},
   // { path: "szamla-edit", component: SzamlaEditComponent},
@@ -50,7 +62,10 @@ const roterSettings: Routes = [
     PageNotFoundComponent,
     LanguageComponent,
     LanguageEditComponent,
-    LanguageNewComponent
+    LanguageNewComponent,
+    OtherSkillComponent,
+    OtherSkillNewComponent,
+    OtherSkillEditComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +80,9 @@ const roterSettings: Routes = [
     UrlService,
     ConfigService,
     CityService,
-    LanguageService
+    LanguageService,
+    MessageappService,
+    OtherSkillService
   ],
   bootstrap: [AppComponent]
 })
