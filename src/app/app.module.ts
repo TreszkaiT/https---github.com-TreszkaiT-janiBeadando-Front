@@ -41,6 +41,10 @@ import { ProofExperienceService } from './services/models/proofexperience.servic
 import { ProofExperienceComponent } from './frames/content/proofexperience/proofexperience.component';
 import { ProofExperienceNewComponent } from './frames/content/proofexperience/proofexperience-new/proofexperience-new.component';
 import { ProofExperienceEditComponent } from './frames/content/proofexperience/proofexperience-edit/proofexperience-edit.component';
+import { SocialMediaService } from './services/models/socialmedia.service';
+import { SocialMediaComponent } from './frames/content/socialmedia/socialmedia.component';
+import { SocialMediaNewComponent } from './frames/content/socialmedia/socialmedia-new/socialmedia-new.component';
+import { SocialMediaEditComponent } from './frames/content/socialmedia/socialmedia-edit/socialmedia-edit.component';
 
 
 
@@ -64,6 +68,9 @@ const roterSettings: Routes = [
   { path: "proofexperience", component: ProofExperienceComponent},
   { path: "proofexperience-new", component: ProofExperienceNewComponent},
   { path: "proofexperience-edit", component: ProofExperienceEditComponent},   
+  { path: "socialmedia", component: SocialMediaComponent},
+  { path: "socialmedia-new", component: SocialMediaNewComponent},
+  { path: "socialmedia-edit", component: SocialMediaEditComponent},    
   { path: '**', component: PageNotFoundComponent}
 ]
 
@@ -92,7 +99,10 @@ const roterSettings: Routes = [
     PictureEditComponent,
     ProofExperienceComponent,
     ProofExperienceNewComponent,
-    ProofExperienceEditComponent
+    ProofExperienceEditComponent,
+    SocialMediaComponent,
+    SocialMediaNewComponent,
+    SocialMediaEditComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +122,8 @@ const roterSettings: Routes = [
     OtherSkillService,
     PhoneService,
     PictureService,
-    ProofExperienceService
+    ProofExperienceService,
+    SocialMediaService
   ],
   bootstrap: [AppComponent]
 })
