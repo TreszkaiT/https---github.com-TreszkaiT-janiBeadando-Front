@@ -83,7 +83,14 @@ const roterSettings: Routes = [
   { path: "study-edit", component: StudyEditComponent},      
   { path: "messageapp", component: MessageAppComponent},
   { path: "messageapp-new", component: MessageAppNewComponent},
-  { path: "messageapp-edit", component: MessageAppEditComponent},   
+  { path: "messageapp-edit", component: MessageAppEditComponent},
+  {
+		path: 'registration',
+		loadChildren: () =>
+			import('./page/registration/registration-page.module').then(
+				(module) => module.RegistrationPageModule
+			),
+	}, 
   { path: '**', component: PageNotFoundComponent}
 ]
 
