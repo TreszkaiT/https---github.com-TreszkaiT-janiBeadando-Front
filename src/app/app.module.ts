@@ -7,8 +7,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationDataModule } from './core/authentication/data/authentication-data.module';
+import { AuthenticationStoreModule } from './core/authentication/store/authentication-store.module';
 import { PageNotFoundComponent } from './frames/page-not-found/page-not-found.component';
 import { TopHeaderComponent } from './frames/top-header/top-header.component';
+import { AdminPageGuard } from './page/admin/guard';
 import { ConfigService } from './services/config.service';
 import { HttpService } from './services/http.service';
 import { CityService } from './services/models/city.service';
@@ -32,6 +34,7 @@ import { UrlService } from './services/url.service';
     FormsModule,
     AppRoutingModule,
     AuthenticationDataModule,
+    AuthenticationStoreModule,
   ],
   providers: [
     HttpService,
@@ -46,6 +49,7 @@ import { UrlService } from './services/url.service';
     ProofExperienceService,
     SocialMediaService,
     StudyService,
+    AdminPageGuard
   ],
   bootstrap: [AppComponent],
 })

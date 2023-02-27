@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginModel } from 'src/app/api/authentication';
+import { AuthenticationDataService, LoginModel } from 'src/app/api/authentication';
 export interface LoginFormModel {
 	formGroup: FormGroup;
 }
@@ -17,7 +17,8 @@ export class LoginFormService {
 	public constructor(
 		private activatedRoute: ActivatedRoute,
 		private formBuilder: FormBuilder,
-		private router: Router
+		private router: Router,
+		private authenticationDataService: AuthenticationDataService
 	) {
 		this.params$$ = new ReplaySubject();
 	}
@@ -45,11 +46,17 @@ export class LoginFormService {
 	}
 
 	private register(): void {
-		const LoginModel =  this.createLoginModel(
+		const loginModel =  this.createLoginModel(
 			this.params.formGroup
 		);
 
-		// this.authenticationDataService.login(Loginmodel);
+		this.authenticationDataService.login$(loginModel).subscribe({
+			next: (user) => {
+				if (user) {
+					this.router.navigateByUrl('/');
+				}
+			}
+		});
 	}
 
 	private createFormGroup(): FormGroup {

@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PageNotFoundComponent } from './frames/page-not-found/page-not-found.component';
+import { AdminPageGuard } from './page/admin/guard';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'admin'
+    redirectTo: 'admin',
   },
   {
     path: 'admin',
@@ -15,6 +16,8 @@ const routes: Routes = [
       import('./page/admin/admin-page.module').then(
         (module) => module.AdminPageModule
       ),
+    canActivate: [AdminPageGuard],
+    
   },
   {
     path: 'registration',
