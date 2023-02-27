@@ -1,6 +1,6 @@
 <section class="album-form" *ngIf="params$ | async as params">
 	<form [formGroup]="params.formGroup">
-		<h4>Registration</h4>
+		<h4>Login</h4>
 
 		<div class="mb-3">
 			<label class="form-label">Email</label>
@@ -14,10 +14,12 @@
 			<input type="password" formControlName="password" class="form-control" />
 		</div>
 
-		<div style="margin-top: 10px">
+		<div style="margin-top: 10px" class="button-bar">
 			<button type="button" class="btn btn-primary" (click)="submit()"
 				[disabled]="!params.formGroup.valid">
 				Submit</button>
+
+			<a [routerLink]="['../registration']">Register</a>
 		</div>
 	</form>
 </section>

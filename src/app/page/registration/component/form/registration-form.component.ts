@@ -18,10 +18,6 @@ export class RegistrationFormComponent implements OnInit {
 	public constructor(private componentService: RegistrationFormService) {
 	}
 
-	public cancel(): void {
-		this.componentService.cancel();
-	}
-
 	public ngOnInit(): void {
 		this.params$ = this.componentService.init$();
 	}

@@ -1,23 +1,23 @@
-import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-export interface RegistrationModel {
+export interface LoginModel {
 	email: string;
 	password: string;
 }
 
-export interface RegistrationFormModel {
+export interface LoginFormModel {
 	formGroup: FormGroup;
 }
 
 @Injectable()
-export class RegistrationFormService {
-	private params!: RegistrationFormModel;
-	private params$$: ReplaySubject<RegistrationFormModel>;
+export class LoginFormService {
+	private params!: LoginFormModel;
+	private params$$: ReplaySubject<LoginFormModel>;
 
 	public constructor(
 		private activatedRoute: ActivatedRoute,
@@ -27,7 +27,7 @@ export class RegistrationFormService {
 		this.params$$ = new ReplaySubject();
 	}
 
-	public init$(): Observable<RegistrationFormModel> {
+	public init$(): Observable<LoginFormModel> {
 		return of(true).pipe(switchMap(() => {
 			const formGroup: FormGroup = this.createFormGroup();
 
@@ -50,11 +50,11 @@ export class RegistrationFormService {
 	}
 
 	private register(): void {
-		const registrationModel =  this.createRegistrationModel(
+		const LoginModel =  this.createLoginModel(
 			this.params.formGroup
 		);
 
-		// this.authenticationDataService.register(registrationmodel);
+		// this.authenticationDataService.login(Loginmodel);
 	}
 
 	private createFormGroup(): FormGroup {
@@ -64,7 +64,7 @@ export class RegistrationFormService {
 		});
 	}
 
-	private createRegistrationModel(formGroup: FormGroup): RegistrationModel {
+	private createLoginModel(formGroup: FormGroup): LoginModel {
 		return {
 			email: formGroup.value['email'],
 			password: formGroup.value['password'],
