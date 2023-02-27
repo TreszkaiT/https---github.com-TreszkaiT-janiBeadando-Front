@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthenticationDataModule } from './core/authentication/data/authentication-data.module';
 import { PageNotFoundComponent } from './frames/page-not-found/page-not-found.component';
 import { TopHeaderComponent } from './frames/top-header/top-header.component';
 import { ConfigService } from './services/config.service';
@@ -30,6 +31,7 @@ import { UrlService } from './services/url.service';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
+    AuthenticationDataModule,
   ],
   providers: [
     HttpService,

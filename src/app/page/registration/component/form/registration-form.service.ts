@@ -1,15 +1,10 @@
-import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-export interface RegistrationModel {
-	email: string;
-	password: string;
-}
-
+import { AuthenticationDataService, RegistrationModel } from 'src/app/api/authentication';
 export interface RegistrationFormModel {
 	formGroup: FormGroup;
 }
@@ -22,7 +17,8 @@ export class RegistrationFormService {
 	public constructor(
 		private activatedRoute: ActivatedRoute,
 		private formBuilder: FormBuilder,
-		private router: Router
+		private router: Router,
+		private authenticationDataService: AuthenticationDataService
 	) {
 		this.params$$ = new ReplaySubject();
 	}
@@ -54,7 +50,11 @@ export class RegistrationFormService {
 			this.params.formGroup
 		);
 
-		// this.authenticationDataService.register(registrationmodel);
+		this.authenticationDataService.register$(registrationModel).subscribe({next: (data) => {
+			if (data) {
+				this.router.navigate(['../login'], { relativeTo: this.activatedRoute })
+			}
+		}});
 	}
 
 	private createFormGroup(): FormGroup {

@@ -4,12 +4,7 @@ import { switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-export interface LoginModel {
-	email: string;
-	password: string;
-}
-
+import { LoginModel } from 'src/app/api/authentication';
 export interface LoginFormModel {
 	formGroup: FormGroup;
 }
