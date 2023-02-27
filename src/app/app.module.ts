@@ -90,6 +90,13 @@ const roterSettings: Routes = [
 			import('./page/registration/registration-page.module').then(
 				(module) => module.RegistrationPageModule
 			),
+	},
+  {
+		path: 'login',
+		loadChildren: () =>
+			import('./page/login/login-page.module').then(
+				(module) => module.LoginPageModule
+			),
 	}, 
   { path: '**', component: PageNotFoundComponent}
 ]
