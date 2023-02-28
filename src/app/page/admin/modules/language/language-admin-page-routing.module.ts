@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LanguageAdminPageComponent } from './component/language-admin/language-admin-page.component';
+import { LanguageEditComponent } from './component/language-edit/language-edit.component';
 import { LanguageListComponent } from './component/language-list/language-list.component';
+import { LanguageNewComponent } from './component/language-new/language-new.component';
 
 const routes: Routes = [
   {
@@ -18,16 +20,16 @@ const routes: Routes = [
         component: LanguageListComponent,   // statikus betöltődés, nem Lazy
         pathMatch: 'full', 
       },
-      // {
-      //   path: 'language-edit',
-      //   component: LanguageEditComponent,
-      //   pathMatch: 'full', 
-      // },
-      // {
-      //   path: 'language-new',
-      //   component: LanguageNewComponent,
-      //   pathMatch: 'full', 
-      // },
+      {
+        path: 'language-edit',
+        component: LanguageEditComponent,
+        pathMatch: 'full', 
+      },
+      {
+        path: 'language-new',
+        component: LanguageNewComponent,
+        pathMatch: 'full', 
+      },
     ],
   },
 ];
