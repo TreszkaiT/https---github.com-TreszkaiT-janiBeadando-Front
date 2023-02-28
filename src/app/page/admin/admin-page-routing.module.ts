@@ -26,7 +26,14 @@ const routes: Routes = [
           import('./modules/language/language-admin-page.module').then(
             (module) => module.LanguageAdminPageModule
           ),
-      },      
+      },  
+      {
+        path: 'otherskill',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/otherskill/otherskill-admin-page.module').then(
+            (module) => module.OtherskillAdminPageModule
+          ),
+      },           
     ],
   },
 ];
