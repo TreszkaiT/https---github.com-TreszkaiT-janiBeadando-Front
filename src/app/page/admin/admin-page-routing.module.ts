@@ -47,7 +47,14 @@ const routes: Routes = [
           import('./modules/picture/picture-admin-page.module').then(
             (module) => module.PictureAdminPageModule
           ),
-      },                      
+      },     
+      {
+        path: 'study',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/study/study-admin-page.module').then(
+            (module) => module.StudyAdminPageModule
+          ),
+      },                        
     ],
   },
 ];
