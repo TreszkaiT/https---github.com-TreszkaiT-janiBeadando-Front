@@ -20,6 +20,13 @@ const routes: Routes = [
             (module) => module.CityAdminPageModule
           ),
       },
+      {
+        path: 'language',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/language/language-admin-page.module').then(
+            (module) => module.LanguageAdminPageModule
+          ),
+      },      
     ],
   },
 ];
