@@ -6,15 +6,15 @@ import { PersonComponent } from './modules/person/person.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: '',                                                             // ha az admin URL meg van hívva
     component: AdminPageComponent,
     children: [
       {
-        path: 'person',
+        path: 'person',                                                 // akkor statikusan a persont fogja betölteni
         component: PersonComponent,
       },
       {
-        path: 'city',
+        path: 'city',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
         loadChildren: () =>
           import('./modules/city/city-admin-page.module').then(
             (module) => module.CityAdminPageModule

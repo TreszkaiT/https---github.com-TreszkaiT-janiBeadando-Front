@@ -18,7 +18,7 @@ const routes: Routes = [
       },
       {
         path: 'city-list',
-        component: CityListComponent,
+        component: CityListComponent,   // statikus betöltődés, nem Lazy
         pathMatch: 'full', 
       },
       {

@@ -12,7 +12,7 @@ import { RegistrationPageRoutingModule } from './registration-page-routing.modul
   declarations: [RegistrationFormComponent, RegistrationPageComponent],
   imports: [
     CommonModule,
-    RegistrationPageRoutingModule,
+    RegistrationPageRoutingModule,                      // RegistrationPageRoutingModule is kell
     FormsModule,
     ReactiveFormsModule,
   ],

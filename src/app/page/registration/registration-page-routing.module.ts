@@ -5,14 +5,14 @@ import { RegistrationPageComponent } from './component';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: '',												
 		pathMatch: 'full',
-		component: RegistrationPageComponent,
+		component: RegistrationPageComponent,				// ez a route itt már statikus, mert nincs benne: loadChildren...
 	},
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes)],
+	imports: [RouterModule.forChild(routes)],				// ez forChild() hívja be a fenti route-okat:  ''
 	exports: [RouterModule],
 })
 export class RegistrationPageRoutingModule {}
