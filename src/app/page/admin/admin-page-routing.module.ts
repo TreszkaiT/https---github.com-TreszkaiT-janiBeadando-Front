@@ -40,7 +40,14 @@ const routes: Routes = [
           import('./modules/phone/phone-admin-page.module').then(
             (module) => module.PhoneAdminPageModule
           ),
-      },                
+      },  
+      {
+        path: 'picture',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/picture/picture-admin-page.module').then(
+            (module) => module.PictureAdminPageModule
+          ),
+      },                      
     ],
   },
 ];
