@@ -33,7 +33,14 @@ const routes: Routes = [
           import('./modules/otherskill/otherskill-admin-page.module').then(
             (module) => module.OtherskillAdminPageModule
           ),
-      },           
+      },    
+      {
+        path: 'phone',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/phone/phone-admin-page.module').then(
+            (module) => module.PhoneAdminPageModule
+          ),
+      },                
     ],
   },
 ];
