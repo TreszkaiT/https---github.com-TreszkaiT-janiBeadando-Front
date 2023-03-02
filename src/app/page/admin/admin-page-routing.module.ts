@@ -68,7 +68,14 @@ const routes: Routes = [
           import('./modules/socialmedia/socialmedia-admin-page.module').then(
             (module) => module.SocialmediaAdminPageModule
           ),
-      },                                   
+      },   
+      {
+        path: 'messageapp',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/messageapp/messageapp-admin-page.module').then(
+            (module) => module.MessageappAdminPageModule
+          ),
+      },                                      
     ],
   },
 ];
