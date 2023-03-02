@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Közösségi Médiák listázása</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div>
+            <ul>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['../socialmedia-new']">New socialmedia</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Neve</th>
+                            <th>Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let socialmedia of currencies">
+                            <td> {{ socialmedia.id }}</td>
+                            <td> {{ socialmedia.name }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button (click)="onEditSocialmedia(socialmedia)" type="button" class="btn btn-primary">
+                                        <fa-icon [icon]="faEdit"></fa-icon>
+                                    </button>
+                                    <button (click)="onDeleteSocialmedia(socialmedia)" type="button" class="btn btn-danger">
+                                        <fa-icon [icon]="faTimes"></fa-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

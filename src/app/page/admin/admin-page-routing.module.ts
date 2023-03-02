@@ -61,7 +61,14 @@ const routes: Routes = [
           import('./modules/proofexperience/proofexperience-admin-page.module').then(
             (module) => module.ProofexperienceAdminPageModule
           ),
-      },                             
+      }, 
+      {
+        path: 'socialmedia',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/socialmedia/socialmedia-admin-page.module').then(
+            (module) => module.SocialmediaAdminPageModule
+          ),
+      },                                   
     ],
   },
 ];
