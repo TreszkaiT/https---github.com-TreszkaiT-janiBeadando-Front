@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Nyelvek listázása</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div>
+            <ul>
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['../proofexperience-new']">New proofexperience</a></li>
+            </ul>
+        </div>
+
+        <div class="col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Munkahely neve</th>
+                            <th>Tól</th>
+                            <th>Ig</th>
+                            <th>Megjegyzés</th>
+                            <th>Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let proofexperience of currencies">
+                            <td> {{ proofexperience.id }}</td>
+                            <td> {{ proofexperience.nameWork }}</td>
+                            <td> {{ proofexperience.from }}</td>
+                            <td> {{ proofexperience.to }}</td>
+                            <td> {{ proofexperience.comment }}</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button (click)="onEditProofexperience(proofexperience)" type="button" class="btn btn-primary">
+                                        <fa-icon [icon]="faEdit"></fa-icon>
+                                    </button>
+                                    <button (click)="onDeleteProofexperience(proofexperience)" type="button" class="btn btn-danger">
+                                        <fa-icon [icon]="faTimes"></fa-icon>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
