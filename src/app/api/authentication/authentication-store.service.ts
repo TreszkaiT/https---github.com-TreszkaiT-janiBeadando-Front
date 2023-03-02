@@ -1,9 +1,13 @@
 import { Observable } from 'rxjs';
 
 import { User } from '../user';
+import { LoginModel, RegistrationModel } from './authentication';
 
 export abstract class AuthenticationStoreService {
-  public user!: User | null;
-  public abstract getUser$(): Observable<User | null>;
+  public abstract dispatchLogin(loginModel: LoginModel): void;
+  public abstract dispatchRegistrationAction(
+    registrationModel: RegistrationModel
+  ): void;
   public abstract isLoggedIn$(): Observable<boolean>;
+  public abstract selectAuthenticatedUser$(): Observable<User | null>;
 }

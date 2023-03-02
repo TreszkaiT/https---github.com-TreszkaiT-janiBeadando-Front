@@ -27,6 +27,7 @@ import { ProofExperienceService } from './services/models/proofexperience.servic
 import { SocialMediaService } from './services/models/socialmedia.service';
 import { StudyService } from './services/models/study.service';
 import { UrlService } from './services/url.service';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, TopHeaderComponent, PageNotFoundComponent],
@@ -48,6 +49,7 @@ import { UrlService } from './services/url.service';
         },
       }
     ),
+    EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [

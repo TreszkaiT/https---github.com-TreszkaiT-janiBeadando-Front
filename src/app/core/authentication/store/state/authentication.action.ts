@@ -1,6 +1,7 @@
-import { createAction, props } from '@ngrx/store';
-import { RegistrationModel } from 'src/app/api/authentication';
+import { LoginModel, RegistrationModel } from 'src/app/api/authentication';
 import { User } from 'src/app/api/user';
+
+import { createAction, props } from '@ngrx/store';
 
 export const register = createAction(
   '[Registration Component] Register',
@@ -14,7 +15,10 @@ export const registerFail = createAction(
   props<{ error: string }>()
 );
 
-export const login = createAction('[Login Component] Login');
+export const login = createAction(
+  '[Login Component] Login',
+  props<{ loginModel: LoginModel }>()
+);
 export const loginSuccess = createAction(
   '[Login Component] Login Success',
   props<{ user: User }>()

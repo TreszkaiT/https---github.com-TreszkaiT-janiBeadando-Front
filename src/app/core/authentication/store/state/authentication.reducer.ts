@@ -1,30 +1,43 @@
-import { createReducer, on } from '@ngrx/store';
-import * as actions from './authentication.action';
+import { AUTHENTICATION_FEATURE_KEY } from 'src/app/api/authentication';
 import { User } from 'src/app/api/user';
 
-export interface AuthenticationState { authenticatedUser: User | null; error: string | null };
+import { createReducer, on } from '@ngrx/store';
 
-export const initialState: AuthenticationState = { authenticatedUser: null, error: null };
+import * as actions from './authentication.action';
+
+export interface AuthenticationState {
+  authenticatedUser: User | null;
+  error: string | null;
+}
+
+export const initialState: AuthenticationState = {
+  authenticatedUser: null,
+  error: null,
+};
+
+export interface AuthenticationPartialState {
+  readonly [AUTHENTICATION_FEATURE_KEY]: AuthenticationState;
+}
 
 export const authenticationReducer = createReducer(
   initialState,
   on(actions.registerSuccess, (state) => state),
   on(actions.registerFail, (state, { error }) => {
     return {
-        ...state,
-        error
-    }
+      ...state,
+      error,
+    };
   }),
   on(actions.loginSuccess, (state, { user }) => {
     return {
-        ...state,
-        authenticatedUser: user
-    }
+      ...state,
+      authenticatedUser: user,
+    };
   }),
   on(actions.loginFail, (state, { error }) => {
     return {
-        ...state,
-        error
-    }
-  }),
+      ...state,
+      error,
+    };
+  })
 );
