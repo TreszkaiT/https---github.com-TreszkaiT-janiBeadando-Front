@@ -54,7 +54,14 @@ const routes: Routes = [
           import('./modules/study/study-admin-page.module').then(
             (module) => module.StudyAdminPageModule
           ),
-      },                        
+      },   
+      {
+        path: 'proofexperience',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('./modules/proofexperience/proofexperience-admin-page.module').then(
+            (module) => module.ProofexperienceAdminPageModule
+          ),
+      },                             
     ],
   },
 ];
