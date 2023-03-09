@@ -3,7 +3,7 @@ import { AuthenticationDataService } from 'src/app/api/authentication';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { AuthenticationDataServiceMock } from './service';
+import { AuthenticationDataServiceImpl } from './service';
 
 @NgModule({
   declarations: [],
@@ -11,7 +11,7 @@ import { AuthenticationDataServiceMock } from './service';
   providers: [
     {
       provide: AuthenticationDataService,
-      useClass: AuthenticationDataServiceMock,
+      useClass: AuthenticationDataServiceImpl,      //  AuthenticationDataServiceMock -- mockot, vagy Implementációt használjon
     },
   ],
 })

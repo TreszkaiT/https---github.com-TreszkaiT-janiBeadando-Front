@@ -39,10 +39,6 @@ export class LoginFormService {
 
 	public submit(): void {
 		this.register();
-
-		this.router.navigate(['../../list'], {
-			relativeTo: this.activatedRoute,
-		});
 	}
 
 	private register(): void {
@@ -68,8 +64,11 @@ export class LoginFormService {
 
 	private createLoginModel(formGroup: FormGroup): LoginModel {
 		return {
+			id: 0,
+			name: "fdf",
 			email: formGroup.value['email'],
 			password: formGroup.value['password'],
+			found: false,
 		}
 	}
 }

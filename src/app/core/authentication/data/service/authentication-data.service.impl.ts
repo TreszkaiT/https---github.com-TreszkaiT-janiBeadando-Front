@@ -1,4 +1,4 @@
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import {
   AuthenticationDataService,
   LoginModel,
@@ -17,10 +17,12 @@ export class AuthenticationDataServiceImpl extends AuthenticationDataService {
   }
 
   public login$(loginModel: LoginModel): Observable<User | null> {
-    return this.httpClient.post<User>(`${environment.apiUrl}/login`, loginModel);
+    return this.httpClient.post<User>(`${environment.apiUrl}/user/login`, loginModel).pipe(tap(data => (
+      this.authenticatedUser = data
+    )))
   }
 
   public register$(registrationModel: RegistrationModel): Observable<true> {
-    return this.httpClient.post(`${environment.apiUrl}/register`, registrationModel).pipe(map(data => true));
+    return this.httpClient.post(`${environment.apiUrl}/user/register`, registrationModel).pipe(map(data => true));
   }
 }
