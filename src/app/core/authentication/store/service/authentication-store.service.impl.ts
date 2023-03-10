@@ -1,20 +1,41 @@
 import { Observable, of } from 'rxjs';
-import { AuthenticationStoreService, LoginModel, RegistrationModel } from 'src/app/api/authentication';
+import {
+  AuthenticationStoreService,
+  LoginModel,
+  RegistrationModel,
+} from 'src/app/api/authentication';
 import { User } from 'src/app/api/user';
 
 import { Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+
+import * as authenticationActions from '../state/authentication.action';
+import { AuthenticationPartialState } from '../state/authentication.reducer';
+import * as authenticationSelectors from '../state/authentication.selectors';
 
 @Injectable()
 export class AuthenticationStoreServiceImpl extends AuthenticationStoreService {
+  public constructor(private store: Store<AuthenticationPartialState>) {
+    super();
+  }
+
   public dispatchLogin(loginModel: LoginModel): void {
-    throw new Error('Method not implemented.');
+    this.store.dispatch(authenticationActions.login({ loginModel }));
   }
-  public dispatchRegistrationAction(registrationModel: RegistrationModel): void {
-    throw new Error('Method not implemented.');
+
+  public dispatchRegistrationAction(
+    registrationModel: RegistrationModel
+  ): void {
+    this.store.dispatch(authenticationActions.register({ registrationModel }));
   }
-  public isLoggedIn$(): Observable<boolean> {    
-    throw new Error('Method not implemented.');
+
+  public isLoggedIn$(): Observable<boolean> {
+    return this.store.pipe(select(authenticationSelectors.isAuthenticated));
   }
+
   public selectAuthenticatedUser$(): Observable<User | null> {
+    return this.store.pipe(
+      select(authenticationSelectors.selectAuthenticatedUser)
+    );
   }
 }

@@ -24,12 +24,13 @@ export class AuthenticationDataServiceMock extends AuthenticationDataService {
       ? this.user.email === loginModel.email
       : false;
 
-    return of(loggedIn ? loginModel : null);
+    return of(loggedIn ? loginModel as User : null);
   }
 
   public register$(registrationModel: RegistrationModel): Observable<true> {
     this.user = {
-      email: registrationModel.email,
+      ...registrationModel,
+      id: 1234
     };
 
     return of(true);

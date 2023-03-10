@@ -1,9 +1,6 @@
 import { Observable, of, ReplaySubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import {
-  AuthenticationStoreService,
-  RegistrationModel,
-} from 'src/app/api/authentication';
+import { AuthenticationStoreService, RegistrationModel } from 'src/app/api/authentication';
 
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -56,12 +53,12 @@ export class RegistrationFormService {
 
   private createRegistrationModel(formGroup: FormGroup): RegistrationModel {
     return {
-	id: 0,
-	name: "fdf",
-	email: formGroup.value['email'],
-	password: formGroup.value['password'],
-	found: false,
-    }
+      id: 0,
+      name: 'fdf',
+      email: formGroup.value['email'],
+      password: formGroup.value['password'],
+      found: false,
+    };
   }
 
   private register(): void {
@@ -69,9 +66,11 @@ export class RegistrationFormService {
       this.params.formGroup
     );
 
-    this.authenticationStoreService.dispatchRegistrationAction(registrationModel);
-	this.router.navigate(['../login'], {
-		relativeTo: this.activatedRoute,
-	  });
+    this.authenticationStoreService.dispatchRegistrationAction(
+      registrationModel
+    );
+    this.router.navigate(['../login'], {
+      relativeTo: this.activatedRoute,
+    });
   }
 }

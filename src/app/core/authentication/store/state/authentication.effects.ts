@@ -16,7 +16,7 @@ export class AuthenticationEffects {
         return this.authenticationDataService.login$(action.loginModel).pipe(
           map((user) => {
             if (!user) {
-              throw new Error('This user is nor registrated yet.');
+              throw new Error('This user is registrated yet.');
             }
 
             return authenticationActions.loginSuccess({ user });
