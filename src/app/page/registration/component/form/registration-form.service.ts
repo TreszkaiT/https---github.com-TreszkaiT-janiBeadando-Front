@@ -42,12 +42,16 @@ export class RegistrationFormService {
 
   public submit(): void {
     this.register();
+
+		// this.router.navigate(['../../list'], {				// mock miatt volt itt
+		// 	relativeTo: this.activatedRoute,
+		// })		
   }
 
   private createFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      email: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+	return this.formBuilder.group({					// a formBuilder létrehoz 1 group-ot, amiben van:	
+		email: [null, [Validators.required, Validators.email]],	// 1 email property, melyet kötelező kitölteni
+      		password: [null, [Validators.required]],
     });
   }
 

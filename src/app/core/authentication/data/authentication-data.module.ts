@@ -10,7 +10,7 @@ import { AuthenticationDataServiceMock } from './service';
   imports: [CommonModule],
   providers: [
     {
-      provide: AuthenticationDataService,
+      provide: AuthenticationDataService,           // a registration-form.service.ts construct-orában használom ezt
       useClass: AuthenticationDataServiceMock,
       // I use mock service because I don't have backend application.
       // Please use real service instead at your development environment.

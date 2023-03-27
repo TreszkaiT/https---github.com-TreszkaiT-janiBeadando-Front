@@ -1,4 +1,4 @@
-import { Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';                                                                // of() Creation operátor Observable-t készít;; emittál érétket
 import {
   AuthenticationStoreService,
   LoginModel,
@@ -15,8 +15,8 @@ import * as authenticationSelectors from '../state/authentication.selectors';
 
 @Injectable()
 export class AuthenticationStoreServiceImpl extends AuthenticationStoreService {
-  public constructor(private store: Store<AuthenticationPartialState>) {
-    super();
+  public constructor(private store: Store<AuthenticationPartialState>) {            // Dependency Injecion
+    super();                                                                        // explicit konstruktor hozzáadásakor ehhez meg kell hívni a super ősosztályt
   }
 
   public dispatchLogin(loginModel: LoginModel): void {
@@ -37,5 +37,3 @@ export class AuthenticationStoreServiceImpl extends AuthenticationStoreService {
     return this.store.pipe(
       select(authenticationSelectors.selectAuthenticatedUser)
     );
-  }
-}

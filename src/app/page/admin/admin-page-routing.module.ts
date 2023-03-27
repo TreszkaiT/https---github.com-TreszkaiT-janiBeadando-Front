@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'person',                                                 // akkor statikusan a persont fogja betölteni
-        component: PersonComponent,
+        component: PersonComponent,                                     // de még nincs modularizálva, de még nem tölt be semmit, mert itt nincs redirectTo: redirectolás!!!
       },
       {
         path: 'city',                                                   // Lazy modon meg a city-t, ha szükség lezs rá

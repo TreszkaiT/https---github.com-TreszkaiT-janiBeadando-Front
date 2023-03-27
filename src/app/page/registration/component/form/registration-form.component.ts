@@ -15,11 +15,11 @@ import { RegistrationFormModel, RegistrationFormService } from './registration-f
 export class RegistrationFormComponent implements OnInit {
 	public params$!: Observable<RegistrationFormModel>;
 
-	public constructor(private componentService: RegistrationFormService) {
+	public constructor(private componentService: RegistrationFormService) {				// FormGroup átadása a komponensnek (Service-ből)
 	}
 
 	public ngOnInit(): void {
-		this.params$ = this.componentService.init$();
+		this.params$ = this.componentService.init$();									// 1. init meghívása
 	}
 
 	public submit(): void {

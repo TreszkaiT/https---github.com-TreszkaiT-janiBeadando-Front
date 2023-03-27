@@ -38,6 +38,10 @@ export class LoginFormService {
 
 	public submit(): void {
 		this.login();
+
+		// this.router.navigate(['../../list'], {				// mock miatt volt itt
+		// 	relativeTo: this.activatedRoute,
+		// })
 	}
 
 	private login(): void {
@@ -51,7 +55,7 @@ export class LoginFormService {
 
 	private createFormGroup(): FormGroup {
 		return this.formBuilder.group({
-			email: [null, [Validators.required]],
+			email: [null, [Validators.required, Validators.email]],
 			password: [null, [Validators.required]],
 		});
 	}

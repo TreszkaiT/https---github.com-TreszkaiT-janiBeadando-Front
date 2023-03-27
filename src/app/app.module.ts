@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationDataModule } from './core/authentication/data/authentication-data.module';
 import { AuthenticationStoreModule } from './core/authentication/store/authentication-store.module';
+import { CityComponent } from './frames/content/city/city.component';
+import { ContentComponent } from './frames/content/content.component';
 import { PageNotFoundComponent } from './frames/page-not-found/page-not-found.component';
 import { TopHeaderComponent } from './frames/top-header/top-header.component';
 import { AdminPageGuard } from './page/admin/guard';
@@ -29,17 +31,22 @@ import { StudyService } from './services/models/study.service';
 import { UrlService } from './services/url.service';
 import { EffectsModule } from '@ngrx/effects';
 
+// const routerSettings: Routes = [                       // itt az app.module.ts-ben nem jó a routing, mert akkor 
+//   {path: '', component: ContentComponent},             // ez itt alatta minden statikusan fordul bele a coreba, és az app csak azután indul el, mikor ez a nagy mennyiségú js majd letöltődik
+//   {path: "city", component: CityComponent}             // optimalizációnál (Firebase-nél) ez nagyon fontos, hogy mennyi adatot generálok
+// ]
+
 @NgModule({
   declarations: [AppComponent, TopHeaderComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
     AuthenticationDataModule,
     AuthenticationStoreModule,
+    // RouterModule.forRoot(routerSettings)             // ez hívja meg a fentebbi root-ingot
     StoreModule.forRoot(
       {},
       {
@@ -68,5 +75,6 @@ import { EffectsModule } from '@ngrx/effects';
     AdminPageGuard,
   ],
   bootstrap: [AppComponent],
+  
 })
 export class AppModule {}

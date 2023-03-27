@@ -14,7 +14,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'city-list',
+        redirectTo: 'city-list',          // automatikusan redirectel a city-list-re
       },
       {
         path: 'city-list',
