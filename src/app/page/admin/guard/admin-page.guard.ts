@@ -17,13 +17,13 @@ export class AdminPageGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authenticationStoreService.isLoggedIn$().pipe(    // a canActivate fgv. az authenticationStoreService-től lekéri hogy isLoggedIn-e
+    return this.authenticationStoreService.isLoggedIn$().pipe(    // a canActivate fgv. az authenticationStoreService-től lekéri hogy isLoggedIn-e, ami egy Observable logikai érték, be vagy-e loginolva
       map((e) => {
-        if (e) {
+        if (e) {                                                // itt kiértékelődik ez az érték
           return true;                                          // ha igen, akkor true-val tér vissza
         } else {
-            this.router.navigateByUrl('/login');                // ha nem, elnavigál a login Page-ra
-          return false;                                         // és false-val tér vissza
+            this.router.navigateByUrl('/login');                // ha nem, redirect-áljuk az alkalmazást, azaz átnavigál a login Page-ra
+          return false;                                         // és false-al tér vissza
         }
       })
     );

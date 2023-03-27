@@ -10,7 +10,7 @@ import { AuthenticationDataServiceImpl } from './service';
   imports: [CommonModule],
   providers: [
     {
-      provide: AuthenticationDataService,
+      provide: AuthenticationDataService,           // a registration-form.service.ts construct-orában használom ezt
       useClass: AuthenticationDataServiceImpl,      //  AuthenticationDataServiceMock -- mockot, vagy Implementációt használjon
     },
   ],

@@ -39,6 +39,10 @@ export class LoginFormService {
 
 	public submit(): void {
 		this.register();
+
+		// this.router.navigate(['../../list'], {				// mock miatt volt itt
+		// 	relativeTo: this.activatedRoute,
+		// })
 	}
 
 	private register(): void {
@@ -46,10 +50,10 @@ export class LoginFormService {
 			this.params.formGroup
 		);
 
-		this.authenticationDataService.login$(loginModel).subscribe({
+		this.authenticationDataService.login$(loginModel).subscribe({			// a DataService-n meghívjuk a login-t egy loginModellel, és feliratkozunk az Observable-ra
 			next: (user) => {
 				if (user) {
-					this.router.navigateByUrl('/');
+					this.router.navigateByUrl('/');								// ha van User obj, akkor átnavigálunk a / -re, homepage-ra 
 				}
 			}
 		});
@@ -57,7 +61,7 @@ export class LoginFormService {
 
 	private createFormGroup(): FormGroup {
 		return this.formBuilder.group({
-			email: [null, [Validators.required]],
+			email: [null, [Validators.required, Validators.email]],
 			password: [null, [Validators.required]],
 		});
 	}

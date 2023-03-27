@@ -18,20 +18,20 @@ export class RegistrationFormService {
 		private activatedRoute: ActivatedRoute,
 		private formBuilder: FormBuilder,
 		private router: Router,
-		private authenticationDataService: AuthenticationDataService
+		private authenticationDataService: AuthenticationDataService			// Dependency Injection: egy ilyen service-t kérek el. Az Injektor ide beimplementál egy példányt
 	) {
 		this.params$$ = new ReplaySubject();
 	}
 
 	public init$(): Observable<RegistrationFormModel> {
 		return of(true).pipe(switchMap(() => {
-			const formGroup: FormGroup = this.createFormGroup();
+			const formGroup: FormGroup = this.createFormGroup();				// elkészítjük a FormGroup-ot, beállítjuk hogyan viselkedjen
 
 			this.params = {
 				formGroup
 			};
 
-			this.params$$.next(this.params);
+			this.params$$.next(this.params);									// ez a params observable v. subject emittál egy új értéket
 
 			return this.params$$;
 		}))
@@ -39,6 +39,10 @@ export class RegistrationFormService {
 
 	public submit(): void {
 		this.register();
+
+		// this.router.navigate(['../../list'], {				// mock miatt volt itt
+		// 	relativeTo: this.activatedRoute,
+		// })		
 	}
 
 	private register(): void {
@@ -54,8 +58,8 @@ export class RegistrationFormService {
 	}
 
 	private createFormGroup(): FormGroup {
-		return this.formBuilder.group({
-			email: [null, [Validators.required]],
+		return this.formBuilder.group({																// a formBuilder létrehoz 1 group-ot, amiben van:	
+			email: [null, [Validators.required, Validators.email]],													// 1 email property, melyet kötelező kitölteni
 			password: [null, [Validators.required]],
 		});
 	}
@@ -64,7 +68,7 @@ export class RegistrationFormService {
 		return {
 			id: 0,
 			name: "fdf",
-			email: formGroup.value['email'],
+			email: formGroup.value['email'],														// nincs kezdőértéke
 			password: formGroup.value['password'],
 			found: false,
 		}
