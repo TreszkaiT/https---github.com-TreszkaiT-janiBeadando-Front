@@ -11,14 +11,14 @@ const routes: Routes = [
       {
         path: 'user',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
         loadChildren: () =>
-          import('../../module/user/admin/user-admin-page.module').then(
+          import('../../module/domain/user/admin/user-admin-page.module').then(
             (module) => module.UserAdminPageModule
           ),
       },
       {
         path: 'city',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
         loadChildren: () =>
-          import('./modules/city/city-admin-page.module').then(
+          import('../../module/domain/city/admin/city-admin-page.module').then(
             (module) => module.CityAdminPageModule
           ),
       },

@@ -1,3 +1,5 @@
+import { CityModule } from 'src/app/module/domain/city/city.module';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -8,6 +10,11 @@ import { LeftSidebarComponent } from './component/left-sidebar/left-sidebar.comp
 
 @NgModule({
   declarations: [AdminPageComponent, LeftSidebarComponent],
-  imports: [CommonModule, AdminPageRoutingModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    AdminPageRoutingModule,
+    FontAwesomeModule,
+    CityModule,
+  ],
 })
 export class AdminPageModule {}
