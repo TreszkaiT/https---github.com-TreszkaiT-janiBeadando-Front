@@ -1,5 +1,5 @@
 import { LoginModel, RegistrationModel } from 'src/app/api/authentication';
-import { User } from 'src/app/api/user';
+import { UserEntity } from 'src/app/api/user';
 
 import { createAction, props } from '@ngrx/store';
 
@@ -21,7 +21,7 @@ export const login = createAction(
 );
 export const loginSuccess = createAction(
   '[Login Component] Login Success',
-  props<{ user: User }>()
+  props<{ user: UserEntity }>()
 );
 export const loginFail = createAction(
   '[Login Component] Login Fail',

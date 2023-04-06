@@ -1,12 +1,12 @@
 import { AUTHENTICATION_FEATURE_KEY } from 'src/app/api/authentication';
-import { User } from 'src/app/api/user';
+import { UserEntity } from 'src/app/api/user';
 
 import { createReducer, on } from '@ngrx/store';
 
 import * as actions from './authentication.action';
 
 export interface AuthenticationState {
-  authenticatedUser: User | null;
+  authenticatedUser: UserEntity | null;
   error: string | null;
 }
 

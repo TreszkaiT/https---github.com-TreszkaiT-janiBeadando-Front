@@ -4,33 +4,36 @@ import {
   LoginModel,
   RegistrationModel,
 } from 'src/app/api/authentication';
-import { User } from 'src/app/api/user';
+import { UserEntity } from 'src/app/api/user';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AuthenticationDataServiceMock extends AuthenticationDataService {
-  private user!: User | null;
+  private user!: UserEntity | null;
 
-  public constructor(
-    private httpClient: HttpClient,
-  ) {
+  public constructor(private httpClient: HttpClient) {
     super();
   }
 
-  public login$(loginModel: LoginModel): Observable<User | null> {
-    const loggedIn = this.user
-      ? this.user.email === loginModel.email
-      : false;
+  public login$(loginModel: LoginModel): Observable<UserEntity | null> {
+    const loggedIn = this.user ? this.user.email === loginModel.email : false;
 
-    return of(loggedIn ? loginModel as User : null);
+    return of(
+      loggedIn
+        ? ({
+            id: loginModel.id?.toString() || '1',
+            email: loginModel.email,
+          } as UserEntity)
+        : null
+    );
   }
 
   public register$(registrationModel: RegistrationModel): Observable<true> {
     this.user = {
       ...registrationModel,
-      id: 1234
+      id: '1234',
     };
 
     return of(true);

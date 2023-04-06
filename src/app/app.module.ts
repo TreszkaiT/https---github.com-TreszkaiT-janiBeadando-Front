@@ -37,7 +37,7 @@ import { EffectsModule } from '@ngrx/effects';
 // ]
 
 @NgModule({
-  declarations: [AppComponent, TopHeaderComponent, PageNotFoundComponent],
+  declarations: [AppComponent, TopHeaderComponent, PageNotFoundComponent, CityComponent],
   imports: [
     BrowserModule,
     FontAwesomeModule,

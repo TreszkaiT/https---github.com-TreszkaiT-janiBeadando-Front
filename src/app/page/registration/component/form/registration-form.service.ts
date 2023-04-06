@@ -58,7 +58,6 @@ export class RegistrationFormService {
   private createRegistrationModel(formGroup: FormGroup): RegistrationModel {
     return {
       id: 0,
-      name: 'fdf',
       email: formGroup.value['email'],
       password: formGroup.value['password'],
       found: false,

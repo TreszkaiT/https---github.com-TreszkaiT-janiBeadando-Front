@@ -63,7 +63,6 @@ export class LoginFormService {
 	private createLoginModel(formGroup: FormGroup): LoginModel {
 		return {
 			id: 0,
-			name: "fdf",
 			email: formGroup.value['email'],
 			password: formGroup.value['password'],
 			found: false,

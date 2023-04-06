@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AdminPageComponent } from './component';
-import { PersonComponent } from './modules/person/person.component';
 
 const routes: Routes = [
   {
@@ -10,8 +9,11 @@ const routes: Routes = [
     component: AdminPageComponent,
     children: [
       {
-        path: 'person',                                                 // akkor statikusan a persont fogja betölteni
-        component: PersonComponent,                                     // de még nincs modularizálva, de még nem tölt be semmit, mert itt nincs redirectTo: redirectolás!!!
+        path: 'user',                                                   // Lazy modon meg a city-t, ha szükség lezs rá
+        loadChildren: () =>
+          import('../../module/user/admin/user-admin-page.module').then(
+            (module) => module.UserAdminPageModule
+          ),
       },
       {
         path: 'city',                                                   // Lazy modon meg a city-t, ha szükség lezs rá

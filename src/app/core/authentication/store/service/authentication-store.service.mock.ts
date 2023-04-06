@@ -4,7 +4,7 @@ import {
   LoginModel,
   RegistrationModel,
 } from 'src/app/api/authentication';
-import { User } from 'src/app/api/user';
+import { UserEntity } from 'src/app/api/user';
 
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
@@ -29,7 +29,7 @@ export class AuthenticationStoreServiceMock extends AuthenticationStoreService {
     this.store.dispatch(authenticationActions.register({ registrationModel }));
   }
 
-  public selectAuthenticatedUser$(): Observable<User | null> {
+  public selectAuthenticatedUser$(): Observable<UserEntity | null> {
     return this.store.pipe(
       select(authenticationSelectors.selectAuthenticatedUser)
     );

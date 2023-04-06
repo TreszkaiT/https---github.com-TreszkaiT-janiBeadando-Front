@@ -1,4 +1,4 @@
-import { UserEntity, UserEntityAdd, UserEntityUpdate } from 'src/app/api/user';
+import { UserEntity, UserEntityAdd, UserEntityUpdate } from './user';
 
 import { FormGroup } from '@angular/forms';
 
